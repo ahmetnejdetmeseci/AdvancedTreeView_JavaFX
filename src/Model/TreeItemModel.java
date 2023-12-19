@@ -1,9 +1,11 @@
 package Model;
 
-import com.sun.javafx.scene.control.behavior.TreeCellBehavior;
+import java.util.HashMap;
+import java.util.Map;
 
-import Controller.TreeCellRenders;
 import Controller.TreeViewHandlers;
+import ModelContextMenu.ContextMenuModel;
+import ModelContextMenu.UserLayerContextMenuModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -12,9 +14,11 @@ import javafx.scene.control.TreeView;
 public class TreeItemModel extends TreeView<String>{
 	
 	String[] treeViewItemNames = { "YUKSEKLIK HARITALARI", "SIB HARITALARI", "GOOGLE HARITALAR", "YANDEX HARITALAR", "BING HARITALAR", "OVIHERE HARITALAR", "RASTER HARITALAR",
-			"DENIZ HARITALARI", "VEKTOR HATIRALAR", "YUKSEKLIK ANALIZLERI", "KULLANICI KATMANLARI", "PROJE KATMANLARI" };
+			"DENIZ HARITALARI", "VEKTOR HATIRALAR", "YUKSEKLIK ANALIZLERI"};
 
 	ObservableList<TreeItem<String>> mainLayers = FXCollections.observableArrayList();
+	
+	private Map<TreeItem<String>, ContextMenuModel> contextMenuTreeItemMap = new HashMap<>();
 	
     private TreeItem<String> root;
 
@@ -46,7 +50,13 @@ public class TreeItemModel extends TreeView<String>{
     	
 		root.getChildren().addAll(mainLayers);
 		root.setExpanded(true);
-	}
+    }
+    
+    private void assignContextMenuToItems() {
+    	
+    	
+    	
+    }
     
     public TreeView<String> getTreeView(){
     	return this;

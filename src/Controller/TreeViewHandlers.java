@@ -1,7 +1,6 @@
 package Controller;
 
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 
 public class TreeViewHandlers {
 
@@ -44,7 +43,6 @@ public class TreeViewHandlers {
         }
 	}
 	
-	
 	//renaming item
 	public static void renameChild(TreeItem<String> newTreeItem, TreeItem<String> selectedItem) {
 		if(selectedItem != null) {
@@ -73,6 +71,21 @@ public class TreeViewHandlers {
         }
         return null;
     }
+	
+	public static boolean isDescendantChildren(TreeItem<String> item, TreeItem<String> potentialParent) {
+//		if (item == potentialParent) {
+//		    return true;
+//		}
+
+		for (TreeItem<String> child : potentialParent.getChildren()) {
+		    if (isDescendant(item, child)) {
+		        return true;
+		    }
+		}
+
+		return false;
+	}
+	
 	
 	//Check if it is child of
 	public static boolean isDescendant(TreeItem<String> item, TreeItem<String> potentialParent) {
